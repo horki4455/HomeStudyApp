@@ -1,0 +1,14 @@
+
+<div class="container pt-3">
+  <div class="row">
+    <div class="col-lg-10 offset-lg-1">
+     
+    </div>
+    <% if @boards.present? %>
+    debugger
+      <%= render @boards %>
+    <% else %>
+      <%=  '生徒がいません'  %>
+    <% end %>
+  </div>
+</div>
