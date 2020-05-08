@@ -12,7 +12,7 @@ class Admin::BoardsController < Admin::BaseController
 
   def create
     @board = Board.new(board_params)
-    # debugger
+    @board.user = current_user
     if @board.save!
       redirect_to(admin_boards_path, success: '掲示板を作成しました。')
     else
