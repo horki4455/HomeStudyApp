@@ -4,7 +4,9 @@ class Admin::BoardsController < Admin::BaseController
     @boards = Board.all.includes(:user).order(created_at: :desc)
   end
 
-  def show; end
+  def show
+    @board = Board.find(params[:id])
+  end
 
   def new
     @board = Board.new

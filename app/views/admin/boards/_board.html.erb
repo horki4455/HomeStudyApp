@@ -6,6 +6,8 @@
         <h4 class="card-title">
           <a href="#">
             <%= board.title %>
+            <%= link_to '削除', admin_board_path(board), class: 'nav-link', method: :delete  %>
+            <%= link_to '詳細確認', admin_board_path(board), class: 'nav-link'  %>
           </a>
         </h4>
         <div class='mr10 float-right'>
