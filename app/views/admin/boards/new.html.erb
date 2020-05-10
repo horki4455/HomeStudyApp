@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+    <h1><%= '生徒一覧作成' %></h1>
+  
+    <%= form_with model: @board, url: admin_boards_path, local: true do |f| %>
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :body %>
+        <%= f.text_area :body, class: 'form-control', row: 10, style: 'height: 200px' %>
+      </div>
+      <%= f.file_field :image, class: 'form-control', id: :'js-preview-img' %>
+      <%= image_tag @board.image.url, id: :js_img_preview %>
+      <%= f.submit class: 'btn btn-primary' %>
+    <% end %>
+    </div>
+
+  </div>
+</div>
