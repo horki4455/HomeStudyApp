@@ -6,6 +6,7 @@ class Admin::BoardsController < Admin::BaseController
 
   def show
     @board = Board.find(params[:id])
+    @comment = Comment.new
   end
 
   def new

@@ -1,0 +1,9 @@
+<div class="row mb-3">
+  <div class="col-lg-8 offset-lg-2">
+  <%= form_with model: comment, url: admin_board_comments_path(board), local: true do |f| %>
+    <%= f.label :body %>
+    <%= f.text_area :body, class: 'form-control mb-3', id: 'js-new-comment-body', row: 4, placeholder: t('activerecord.attributes.comment.body') %>
+    <%= f.submit '掲示する', class: 'btn btn-primary' %>
+  <% end %>
+  </div>
+</div>

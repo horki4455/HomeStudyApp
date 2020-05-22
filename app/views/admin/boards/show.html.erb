@@ -19,6 +19,9 @@
             </div>
           </div>
           <p><%= simple_format(@board.body) %></p>
+          <%= render 'crud_menus', board: @board %>
+          <%= render 'admin/comments/form', { board: @board, comment: Comment.new } %>
+          <%= render 'admin/comments/comments', { comments: @board.comments.includes(:user).order(created_at: :desc) } %>
         </div>
       </article>
     </div>

@@ -4,14 +4,17 @@ Rails.application.routes.draw do
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
-  resources :board
+  resources :words, only: %i[index]
   resources :users, only: %i[new create]
   namespace :admin do
-    root to: 'dashboards#index'
+    root to: 'boards#index'
     get 'login', to: 'user_sessions#new'
     post 'login', to: 'user_sessions#create'
     delete 'logout', to: 'user_sessions#destroy'
-    resources :boards
+    resources :boards do
+      resources :comments, only: %i[create], shallow: true
+    end
+    resources :comments, only: %i[index], shallow: true
     resources :users, only: %i[index edit update show destroy]
   end
 end

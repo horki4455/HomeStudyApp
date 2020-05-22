@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>単語クイズ</title>
+</head>
+<body>
+  <section class="container">
+    <p id="question"></p>
+    <ul id="choices"></ul>
+    <div id="btn" class="disabled">Next</div>
+  </section>
+  <section id="result" class="hidden">
+      <p></p>
+      <a href="">Replay?</a>
+    </section>
+  <script src="javascripts/tango.js"></script>
+  <%= javascript_include_tag 'tango.js' %>
+</body>
+</html>
