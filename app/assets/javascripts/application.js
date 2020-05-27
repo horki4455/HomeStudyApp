@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //= require tango
+//= require preview
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-

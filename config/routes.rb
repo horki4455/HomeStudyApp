@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   delete 'logout', to: 'user_sessions#destroy'
   resources :words, only: %i[index]
   resources :users, only: %i[new create]
+  resource :profile, only: %i[show edit update]
+  resources :posts
+
   namespace :admin do
     root to: 'boards#index'
     get 'login', to: 'user_sessions#new'

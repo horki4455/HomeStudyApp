@@ -13,6 +13,6 @@ class Admin::CommentsController < Admin::BaseController
     end
 
     def index
-      @comments = comment.all.includes(:board).order(created_at: :desc)
+      @comments = Comment.all.includes(:board).order(created_at: :desc)
     end
   end

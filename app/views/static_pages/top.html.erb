@@ -29,24 +29,9 @@
       <h3 class="description-parts">あんしん情報共有機能</h3>
       <p>✔ 大変な連絡機能をサポート<br>親御さんは欲しい情報を定期的に受信、確認できます！<br>家庭教師に必須の親御さんへの情報交換をお手伝い！</p></div>
     </div>
-  </div>
-  <div class="section-title text-center">
-    <h1 class="title">学習コンテンツお試し！</h1>
-    <%= link_to("学習コンテンツお試す！", words_path, {class: "title"}) %>
-  </div>
-  <title>単語クイズ</title>
-<body>
-  <section class="container">
-    <p id="question"></p>
-    <ul id="choices"></ul>
-    <div id="btn" class="disabled">Next</div>
-  </section>
-  <section id="result" class="hidden">
-      <p></p>
-      <a href="">Replay?</a>
-    </section>
-  <script src="javascripts/tango.js"></script>
-  <%= javascript_include_tag 'tango.js' %>
-</body>
+</div>
+<div class="section-title text-center">
+  <h1><%= link_to("学習コンテンツお試す！", words_path, {class: "title"}) %></h1>
+  <h1>最近の生徒たちのアウトプット一覧</h1>
 </div>
 
