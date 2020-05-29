@@ -1,0 +1,16 @@
+<div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+<% @posts.each do |post| %>
+  <div class="posts-index-item">
+    <div class="post-left">
+      <%= image_tag current_user.image.url, class: 'rounded-circle', size: '50x50' %></td>
+    </div>
+    <div class="post-right">
+      <div class="post-user-name">
+      </div>
+      <%= link_to 'show', post_path(post), class: 'nav-link' %>
+    </div>
+  </div>
+<% end %>
+</div>
+</div>
+

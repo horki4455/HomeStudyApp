@@ -7,11 +7,12 @@
         </div>
         <div class="post-right">
           <div class="post-user-name">
-          </div>
+        </div>
           <%= link_to 'show', post_path(post), class: 'nav-link' %>
         </div>
       </div>
     <% end %>
+    <%= paginate @posts %>
     <%= link_to 'post作成', new_post_path, class: 'nav-link' %>
   </div>
-</div>
+</div> 
