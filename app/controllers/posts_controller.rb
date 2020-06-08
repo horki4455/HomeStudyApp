@@ -32,14 +32,21 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find_by(id: params[:id])
+    @post = Post.find(params[:id])
     @post.content = params[:content]
     @post.save
     if @post.save
       redirect_to(post_path(@post), success: '更新しました。')
     else
-      render("posts/edit")
+      render :edit
+      flash.now['danger'] = '編集に失敗しました'
     end
+  end
+
+  def destroy
+    @post= Post.find(params[:id])
+    @post.destroy!
+    redirect_to(post_path, success: '消去しました。')
   end
 
 end

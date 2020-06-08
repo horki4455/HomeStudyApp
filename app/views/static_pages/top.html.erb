@@ -33,25 +33,20 @@
 <div class="section-title text-center">
   <h1><%= link_to("学習コンテンツお試す！", words_path, {class: "title"}) %></h1>
 
-
-
   <div class="swiper-container">
-  <h1>第二でフェーズ学習コンテンツの拡充予定！</h1>
+  <h1>第二フェーズで<br>学習コンテンツ<br>拡充予定！</h1>
   <div class="swiper-wrapper">
     <div class="swiper-slide">
-       <%= image_tag 'sample.jpg', class: 'rounded-circle'%>
+       <%= image_tag 'sample.jpg'%>
     </div>
     <div class="swiper-slide">
-           <%= image_tag 'sennsei.jpg', class: 'rounded-circle'%>
+           <%= image_tag 'sennsei.jpg'%>
     </div>
     <div class="swiper-slide">
-           <%= image_tag 'sennsei.jpg', class: 'rounded-circle'%>
+           <%= image_tag 'sennsei.jpg'%>
     </div>
   </div>
 </div>
-
-
-
 
 <script>
   let swipeOption = {
@@ -66,31 +61,19 @@
   new Swiper('.swiper-container', swipeOption);
 </script>
 
-
-
-
-
-
-
-
   <h1>最近の生徒たちのアウトプット一覧</h1>
+
   <div class="main posts-index">
-  <div class="container">
-    <% @posts.each do |post| %>
-      <div class="posts-index-item">
-        <div class="post-left">
-          <%= image_tag current_user.image.url, class: 'rounded-circle', size: '50x50' %></td>
-        </div>
-        <div class="post-right">
-          <div class="post-user-name">
-        </div>
-          <%= link_to 'show', post_path(post), class: 'nav-link' %>
-        </div>
+    <div class="container">
+      <% if @posts.present? %>
+        <%= render 'post', post: @posts %>
+      <% else %>
+        <%= '生徒がつぶやいていない' %>
+      <% end %>
       </div>
-    <% end %>
-    <%= paginate @posts %>
-    <%= link_to 'post作成', new_post_path, class: 'nav-link' %>
-  </div>
-</div> 
+  </div> 
+  <%= link_to 'もっと見る', posts_path, class: 'nav-link' %>
+
+
 </div>
 

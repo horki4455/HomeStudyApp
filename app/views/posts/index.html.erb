@@ -5,10 +5,20 @@
         <div class="post-left">
           <%= image_tag current_user.image.url, class: 'rounded-circle', size: '50x50' %></td>
         </div>
+        <div class="posts-show-item">
+          <div class="post-user-name">
+          </div>
+          <p>
+            <%= post.content %>
+          </p>
+          <div class="post-time">
+            <%= post.created_at %>
+          </div>
+        </div>
         <div class="post-right">
           <div class="post-user-name">
         </div>
-          <%= link_to 'show', post_path(post), class: 'nav-link' %>
+          <%= link_to '詳細画面(show)', post_path(post), class: 'nav-link' %>
         </div>
       </div>
     <% end %>
