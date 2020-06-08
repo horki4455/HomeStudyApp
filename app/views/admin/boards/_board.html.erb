@@ -5,7 +5,9 @@
       <div class="card-body">
         <h4 class="card-title">
           <a href="#">
-            <%= board.title %>
+            <%= link_to board.name, admin_board_path(board), class: 'nav-link'  %>
+            <%= link_to '削除', admin_board_path(board), class: 'nav-link', method: :delete  %> 
+            <%= link_to '編集', edit_admin_board_path(board), id: "button-edit-#{board.id}"%>
           </a>
         </h4>
         <div class='mr10 float-right'>

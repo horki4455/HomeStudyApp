@@ -4,7 +4,10 @@ class Admin::BoardsController < Admin::BaseController
     @boards = Board.all.includes(:user).order(created_at: :desc)
   end
 
-  def show; end
+  def show
+    @board = Board.find(params[:id])
+    @comment = Comment.new
+  end
 
   def new
     @board = Board.new
@@ -21,9 +24,12 @@ class Admin::BoardsController < Admin::BaseController
     end
   end
 
-  def edit; end
+  def edit
+    @board = current_user.boards.find(params[:id])
+  end
 
   def update
+    @board = current_user.boards.find(params[:id])
     if @board.update(board_params)
       redirect_to(admin_boards_path(@board), success: '掲示板を更新しました。')
     else
@@ -31,7 +37,7 @@ class Admin::BoardsController < Admin::BaseController
       render :edit
     end
   end
-
+  
   def destroy
     @board.destroy!
     redirect_to(admin_boards_path, success: '掲示板を消去しました。')
@@ -40,7 +46,7 @@ class Admin::BoardsController < Admin::BaseController
   private
 
   def board_params
-    params.require(:board).permit(:title, :body, :image)
+    params.require(:board).permit(:name, :body, :image, :mail)
   end
 
   def set_board

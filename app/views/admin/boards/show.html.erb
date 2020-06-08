@@ -1,0 +1,30 @@
+<div class="container pt-5">
+  <div class="row mb-3">
+    <div class="col-lg-8 offset-lg-2">
+      <h1>生徒詳細画面</h1>
+      <!-- 掲示板内容 -->
+      <article class="card">
+        <div class="card-body">
+          <div class='row'>
+            <div class='col-md-3'>
+              <%= image_tag @board.image.url, class: 'card-img-top img-fluid', size: '300x200' %>
+            </div>
+            <div class='col-md-9'>
+              <h3 class="d-inline"><%= @board.name %></h3>
+                <ul class="list-inline">
+              <h3 class="d-inline"><%= @board.mail %></h3>
+              </ul>
+              
+              <ul class="list-inline">
+                <li class="list-inline-item"><%= @board.body %></li>
+              </ul>
+            </div>
+          </div>
+          <%= render 'crud_menus', board: @board %>
+          <%= render 'admin/comments/form', { board: @board, comment: Comment.new } %>
+          <%= render 'admin/comments/comments', { comments: @board.comments.includes(:user).order(created_at: :desc) } %>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>

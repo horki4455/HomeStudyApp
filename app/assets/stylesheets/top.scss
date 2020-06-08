@@ -1,6 +1,6 @@
 .top-wrapper {
     background-image: image-url("top.jpg");
-    height: calc(100vh - 134px);
+    height: calc(80vh - 134px);
     position: relative;
     background-position: center;
   
@@ -11,11 +11,45 @@
       transform: translate(-50%, -50%);
       width: 100%;
       text-align: center;
-      font-size: 3rem;
-      color: white;
+      font-size: medium;
+      color:black;
+      font-family: 'Comic Sans MS';
   
       @media screen and (max-width: 767px) {
         font-size: 2.0rem;
       }
     }
+    .title {
+      font-size: medium;
+      color:black;
+      font-family: 'Comic Sans MS';
+    }
+.css-slider {
+	width: 300px;
+	height: 200px;
+	overflow: hidden;
+}
+ 
+.slide-item {
+	width: 300px;
+	height: 200px;
+	float: left;
+	position: relative;
+}
+ 
+ 
+.slider-wrapper {
+	width: 300%;
+	position: relative;
+	left: 0;
+	will-change: transform;
+	animation: slider 10s infinite;
+}
+ 
+@keyframes slider {
+  0% { transform: translateX(0); }
+  33% { transform: translateX(-300px); }
+  66% { transform: translateX(-600px); }
+  100% { transform: translateX(0); }
+}
   }

@@ -1,5 +1,79 @@
 <div class="top-wrapper">
   <div class="top-inner-text">
-    <h1>RUNTEQ BOARD APP</h1>
+    <h1> Home Study App </h1>
+  </div>
+  <div class="top-inner-image">
+    <img class="sennsei" src="/assets/sennsei.jpg" width="550" height="425">
   </div>
 </div>
+
+<div class="top-main">
+  <div class="container">
+    <div class="section-title text-center">
+      <h1 class="title">Home Study APP とは</h1>
+      <h4 class="title">家庭教師と親御さんとを繋ぐ<br>学習サポート・コミュニケーションサポートアプリです</h4>
+    </div>
+    <div class="row description-body">
+      <div class="col-md-4 col-sm-6 text-center">
+        <i class="fas fa-drumstick-bite fa-top"></i>
+        <h3 class="description-parts">らくらく生徒管理機能</h3>
+        <p>✔家庭教師の味方<br>生徒一覧管理機能で<br>生徒情報の面倒な<br>確認しなくて済みます！</p>
+      </div>
+      <div class="col-md-4 col-sm-6 text-center">
+        <i class="far fa-comment-alt fa-top"></i>
+        <h3 class="description-parts">学習達成度シェアリング機能！</h3>
+        <p>✔ 生徒の進めた内容の可視化機能で<br>学習レベルの確認<br>親御さんの不安点を確認できます！<br>参考資料のシェアリングがスムーズにでき、満足度UP!</p>
+      </div>
+    <div class="col-md-4 col-sm-6 text-center">
+      <i class="fa fa-search fa-top"></i>
+      <h3 class="description-parts">あんしん情報共有機能</h3>
+      <p>✔ 大変な連絡機能をサポート<br>親御さんは欲しい情報を定期的に受信、確認できます！<br>家庭教師に必須の親御さんへの情報交換をお手伝い！</p></div>
+    </div>
+</div>
+<div class="section-title text-center">
+  <h1><%= link_to("学習コンテンツお試す！", words_path, {class: "title"}) %></h1>
+
+  <div class="swiper-container">
+  <h1>第二フェーズで<br>学習コンテンツ<br>拡充予定！</h1>
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+       <%= image_tag 'sample.jpg'%>
+    </div>
+    <div class="swiper-slide">
+           <%= image_tag 'sennsei.jpg'%>
+    </div>
+    <div class="swiper-slide">
+           <%= image_tag 'sennsei.jpg'%>
+    </div>
+  </div>
+</div>
+
+<script>
+  let swipeOption = {
+    loop: true,
+    effect: 'fade',
+    autoplay: {
+      delay: 1500,
+      disableOnInteraction: false,
+    },
+    speed: 2000,
+  }
+  new Swiper('.swiper-container', swipeOption);
+</script>
+
+  <h1>最近の生徒たちのアウトプット一覧</h1>
+
+  <div class="main posts-index">
+    <div class="container">
+      <% if @posts.present? %>
+        <%= render 'post', post: @posts %>
+      <% else %>
+        <%= '生徒がつぶやいていない' %>
+      <% end %>
+      </div>
+  </div> 
+  <%= link_to 'もっと見る', posts_path, class: 'nav-link' %>
+
+
+</div>
+
