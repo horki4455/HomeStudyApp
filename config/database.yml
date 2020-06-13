@@ -30,6 +30,7 @@ test:
 
 production:
   <<: *default
+  adapter: mysql2
   database: homestudyapp
   username: root
-  password:
+  password:  fa0333FA!  
