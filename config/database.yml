@@ -33,4 +33,9 @@ production:
   adapter: mysql2
   database: homestudyapp
   username: root
+<<<<<<< HEAD
   password:  fa0333FA!  
+=======
+  password: 
+  socket: /var/lib/mysql/mysql.sock
+>>>>>>> fbfe2f0ea5f8adb98b4d0ef7f75eaf1cd16e70ee
