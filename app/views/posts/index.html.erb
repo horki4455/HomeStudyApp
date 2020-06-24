@@ -6,7 +6,20 @@
           <%= image_tag current_user.image.url, class: 'rounded-circle', size: '50x50' %></td>
         </div>
         <div class="posts-show-item">
+        <% if post.user_id == current_user.id %>
+          <div class="post-menus">
+            <%= link_to("編集", "/posts/#{post.id}/edit") %>
+            <%= link_to("削除", post_path(post.id), method: :delete) %>
+          </div>
+      　<% end %>
           <div class="post-user-name">
+            <div id="likes_buttons_<%= post.id %>">
+              <% if current_user.likes.find_by(user_id: @current_user.id, post_id: post.id) %>
+                <%= render 'unlike', { post: post } %>
+              <% else %>
+                <%= render 'like', { post: post } %>
+              <% end %>
+            </div>
           </div>
           <p>
             <%= post.content %>
@@ -14,11 +27,13 @@
           <div class="post-time">
             <%= post.created_at %>
           </div>
+
         </div>
         <div class="post-right">
           <div class="post-user-name">
         </div>
           <%= link_to '詳細画面(show)', post_path(post), class: 'nav-link' %>
+          
         </div>
       </div>
     <% end %>

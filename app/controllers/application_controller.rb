@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :require_login
 
   def log_in(user)
-    session[:user_id] = user.id
+    session[:user_id] = user.id #ゲストログイン機能実装に使用します
   end
 
   private

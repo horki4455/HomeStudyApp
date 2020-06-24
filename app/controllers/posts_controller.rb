@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   
   def index
     @posts = Post.all.includes(:user).order(created_at: :desc).page(params[:page]).per(3)
+    @user = current_user
   end
 
   def show
@@ -18,12 +19,11 @@ class PostsController < ApplicationController
       content: params[:content],
       user_id: @current_user.id
     )
-
     if @post.save
-      redirect_to(posts_path, success: '作成に成功しました')
+      flash[:notice] = "投稿を作成しました"
+      redirect_to post_path(@post)
     else
-      render :new
-      flash.now['danger'] = '作成に失敗しました'
+      render("posts/new")
     end
   end
 
@@ -44,9 +44,8 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post= Post.find(params[:id])
+    @post = Post.find(params[:id])
     @post.destroy!
-    redirect_to(post_path, success: '消去しました。')
+    redirect_back fallback_location: root_path, danger: '投稿を削除しました'
   end
-
 end

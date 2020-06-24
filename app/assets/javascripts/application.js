@@ -13,11 +13,9 @@
 //= require tango
 //= require fullcalendar
 //= require preview
+//= require jquery
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 
-$(() => {
-    $('#calendar').fullCalendar({});
-  })
 

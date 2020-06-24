@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :boards, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :posts, dependent: :destroy
+  has_many :likes, dependent: :destroy
   
   mount_uploader :image, ImageUploader
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
@@ -17,5 +18,13 @@ class User < ApplicationRecord
 
   def full_name
     "#{last_name} #{first_name}"
+  end
+
+  def own_post?(post)
+    self.id == post.user_id
+  end
+
+  def already_liked?(post)
+    likes.exists?(post_id: post.id)
   end
 end
