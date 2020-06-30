@@ -8,8 +8,8 @@
         <div class="posts-show-item">
         <% if post.user_id == current_user.id %>
           <div class="post-menus">
-            <%= link_to("編集", "/posts/#{post.id}/edit") %>
-            <%= link_to("削除", post_path(post.id), method: :delete) %>
+          <%= link_to '編集', edit_post_path(post) %>
+          <%= link_to '削除', post_path(post), method: :delete %>
           </div>
       　<% end %>
           <div class="post-user-name">
@@ -27,11 +27,11 @@
           <div class="post-user-name">
         </div>
           <%= link_to '詳細画面(show)', post_path(post), class: 'nav-link' %>
-          
+
         </div>
       </div>
     <% end %>
     <%= paginate @posts %>
-    <%= link_to 'post作成', new_post_path, class: 'nav-link' %>
+    <%= link_to '今日の学習をアウトプットする', new_post_path, class: 'nav-link' %>
   </div>
-</div> 
+</div>

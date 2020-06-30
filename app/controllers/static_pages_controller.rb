@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  skip_before_action :require_login, only: %i[top]
+  skip_before_action :require_login
 
     def top
       @posts = Post.all.includes(:user).order(created_at: :desc).page(params[:page]).per(3)
@@ -15,7 +15,7 @@ class StaticPagesController < ApplicationController
         flash.now['danger'] = '編集に失敗しました'
       end
     end
-  
+
     def destroy
       @like = Like.find(params[:post_id])
       @like.destroy

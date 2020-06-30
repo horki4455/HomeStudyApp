@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :set_post, only: %i[show edit update destroy]
   
   def index
     @posts = Post.all.includes(:user).order(created_at: :desc).page(params[:page]).per(3)
@@ -6,7 +7,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
     @user = current_user
   end
 
@@ -15,26 +15,22 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(
-      content: params[:content],
-      user_id: @current_user.id
-    )
+    @post = Post.new(post_params)
+    @post.user = current_user
     if @post.save
-      flash[:notice] = "投稿を作成しました"
+      flash[:success] = "投稿を作成しました"
       redirect_to post_path(@post)
     else
-      render("posts/new")
+      flash[:danger] = "投稿を作成できませんでした"
+      render :new
     end
   end
 
-  def edit
-    @post = Post.find(params[:id])
-  end
+  def edit;end
 
   def update
-    @post = Post.find(params[:id])
-    @post.content = params[:content]
-    @post.save
+    @post = Post.new(post_params)
+    @post.user = current_user
     if @post.save
       redirect_to(post_path(@post), success: '更新しました。')
     else
@@ -44,8 +40,17 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post.destroy
+    redirect_back_or_to(posts_path, danger:  '投稿を削除しました')
+  end
+
+  private
+
+  def set_post
     @post = Post.find(params[:id])
-    @post.destroy!
-    redirect_back fallback_location: root_path, danger: '投稿を削除しました'
+  end
+
+  def post_params
+    params.require(:post).permit(:content)
   end
 end

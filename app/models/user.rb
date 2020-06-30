@@ -12,19 +12,11 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true
   validates :email, presence: true
-  validates :first_name, presence: true, length: { maximum: 255 }
-  validates :last_name, presence: true, length: { maximum: 255 }
+  validates :first_name, presence: true, length: { maximum: 55 }
+  validates :last_name, presence: true, length: { maximum: 55 }
   enum role: { general: 0, admin: 1 }
 
   def full_name
     "#{last_name} #{first_name}"
-  end
-
-  def own_post?(post)
-    self.id == post.user_id
-  end
-
-  def already_liked?(post)
-    likes.exists?(post_id: post.id)
   end
 end

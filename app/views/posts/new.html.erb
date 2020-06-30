@@ -1,19 +1,14 @@
 <div class="main posts-new">
   <div class="container">
-    <h1 class="form-heading">投稿する</h1>
-      <%= form_with model: @post, url: posts_path,  method: :post, local: true do |f| %>
-    <div class="form">
-      <div class="form-body">
-        <% @post.errors.full_messages.each do |message| %>
-          <div class="form-error">
-            <%= message %>
-          </div>
-        <% end %>
-        <textarea name="content"><%= @post.content %></textarea>
-        <input type="submit" value="投稿">
+    <h1 class="form-heading">今日の学習日報</h1>
+    <%= form_with model: @post, url: posts_path,  method: :post, local: true do |f| %>
+      <div class="form-group">
+        <%= f.text_area :content, class: 'form-control', row: 5, style: 'height: 80px' %>
       </div>
-    </div>
+      <%= f.submit 'つぶやく', class: 'btn btn-primary' %>
     <% end %>
   </div>
 </div>
+
+
 

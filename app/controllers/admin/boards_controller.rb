@@ -1,5 +1,6 @@
 class Admin::BoardsController < Admin::BaseController
   before_action :set_board, only: %i[update destroy edit]
+  
   def index
     @boards = Board.all.includes(:user).order(created_at: :desc)
   end

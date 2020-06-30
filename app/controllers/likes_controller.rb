@@ -6,7 +6,7 @@ class LikesController < ApplicationController
       redirect_back fallback_location: root_path, success: 'いいねしました'
     else
       render :edit
-      flash.now['danger'] = '編集に失敗しました'
+      flash.now['danger'] = 'いいねに失敗しました'
     end
   end
 

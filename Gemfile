@@ -26,6 +26,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap', '~> 4.3.1'
+gem "bootstrap-sass", "~>3.3.6"
 gem 'font-awesome-sass', '~> 5.11.2'
 gem 'jquery-rails'
 gem 'sorcery'
@@ -73,3 +74,4 @@ gem 'carrierwave'
 gem 'kaminari'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+gem 'draper'

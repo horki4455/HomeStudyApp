@@ -1,5 +1,0 @@
-<% if current_user.likes.find_by(user_id: @current_user.id, post_id: post.id) %>
-    <%= render 'unlike', { post: post } %>
-    <% else %>
-    <%= render 'like', { post: post } %>
-<% end %>
