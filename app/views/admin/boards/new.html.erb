@@ -19,7 +19,7 @@
 
       <%= f.file_field :image, class: 'form-control', id: :'js-preview-img' %>
       <%= image_tag @board.image.url, id: :js_img_preview %>
-      <%= f.submit class: 'btn btn-primary' %>
+      <%= f.submit '作成する', class: 'btn btn-primary' %>
     <% end %>
     </div>
 

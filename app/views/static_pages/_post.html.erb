@@ -1,11 +1,10 @@
 <% @posts.each do |post| %>
+
   <div class="posts-index-item">
     <div class="post-left">
-      <%= image_tag 'sample.jpg', class: 'rounded-circle', size: '50x50' %></td>
+      <%= image_tag 'sample', class: 'rounded-circle', size: '50x50' %></td>
     </div>
     <div class="post-right">
-      <div class="post-user-name">
-    </div>
       <%= link_to '詳細', post_path(post), class: 'nav-link' %>
     </div>
     <div class="posts-show-item">
