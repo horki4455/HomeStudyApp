@@ -19,4 +19,8 @@ class User < ApplicationRecord
   def full_name
     "#{last_name} #{first_name}"
   end
+
+  def own?(object)
+    id == object.user_id
+  end
 end

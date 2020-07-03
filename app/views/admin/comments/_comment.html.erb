@@ -1,29 +1,15 @@
-
-<tr id="comment-<%= comment.id %>">
-<td style="width: 60px">
-  <%= image_tag current_user.image.url, class: 'rounded-circle', size: '50x50' %>
-</td>
-<td>
-  <div id="js-comment-<%= comment.id %>">
-    <%= simple_format(comment.body) %>
-  </div>
-  <div id="js-textarea-comment-box-<%= comment.id %>" style="display;">
-    <textarea id="js-textarea-comment-<%= comment.id %>" class="form-control mb-1"><%= comment.body %></textarea>
-    <button class="btn btn-light js-button-edit-comment-cancel" data-comment-id="<%= comment.id %>">キャンセル</button>
-    <button class="btn btn-success js-button-comment-update" data-comment-id="<%= comment.id %>">更新</button>
-  </div>
-</td>
-
-
-  <td class="action">
-    <ul class="list-inline justify-content-center" style="float: right;">
-      <li class="list-inline-item">
-        <a href="#" class='js-edit-comment-button' data-comment-id="<%= comment.id %>"><i class='fa fa-pen'></i></a>
-      </li>
-      <li class="list-inline-item">
-        <a href="#" class='js-delete-comment-button' data-comment-id="<%= comment.id %>"><i class='fas fa-trash'></i></a>
-      </li>
-    </ul>
+<tr>
+  <td>
+    <%= comment.board.board_user_name %>
   </td>
-
+  <td>
+    <%= comment.body %>
+  </td>
+  <td>
+    <%= l comment.created_at, format: :long %>
+  </td>
+  <td>
+    <%= link_to '編集', edit_admin_comment_path(comment) %>
+    <%= link_to '削除', admin_comment_path(comment), class: 'nav-link', method: :delete  %>
+  </li>
 </tr>

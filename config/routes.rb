@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     resources :boards do
       resources :comments, only: %i[create], shallow: true
     end
-    resources :comments, only: %i[index], shallow: true
+    resources :comments, only: %i[index edit destroy], shallow: true
     resources :users, only: %i[index edit update show destroy]
   end
 end
