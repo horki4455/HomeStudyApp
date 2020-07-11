@@ -26,7 +26,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap', '~> 4.3.1'
-gem "bootstrap-sass", "~>3.3.6"
+gem "bootstrap-sass"
 gem 'font-awesome-sass', '~> 5.11.2'
 gem 'jquery-rails'
 gem 'sorcery'
@@ -43,8 +43,12 @@ gem 'better_errors'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem "rspec-rails"
+  gem "factory_bot_rails"
+  gem 'database_cleaner'
+  gem 'capybara'
+  gem 'webdrivers'
 end
 
 group :development do
@@ -58,10 +62,9 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
+  gem 'rails-controller-testing'
 end
 
 group :production, :staging do
@@ -76,4 +79,4 @@ gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'draper'
 gem 'ransack'
-gem 'ransack'
+gem 'simple_calendar', '~> 2.0'

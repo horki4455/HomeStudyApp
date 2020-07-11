@@ -1,7 +1,9 @@
 class ProfilesController < ApplicationController
   before_action :set_user, only: %i[edit update]
+  before_action :check_guest, only: %i[edit update]
   
-  def edit; end
+  def edit
+  end
 
   def update
     if @user.update(user_params)
@@ -20,5 +22,11 @@ class ProfilesController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :last_name, :first_name, :image)
+  end
+
+  def check_guest
+    if 'test@example.com' == current_user.email
+      redirect_to profile_path, danger: 'ゲストユーザーの変更・削除はできません'
+    end
   end
 end

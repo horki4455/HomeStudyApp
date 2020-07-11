@@ -20,8 +20,8 @@ class UserSessionsController < ApplicationController
     end
 
     def guest
-      user = User.find_by(email: 'test@example.com')
-      log_in(user)
+      guest_user = User.find_by(email: 'test@example.com')
+      log_in(guest_user)
       flash[:success] = 'ゲストユーザーでログインしました'
       flash[:warning] = 'よろしくお願いします！'
       redirect_to root_path

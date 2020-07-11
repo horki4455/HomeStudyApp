@@ -13,10 +13,10 @@ Rails.application.routes.draw do
     resource :likes, only: %i[create destroy]
     get :likes, on: :collection
   end
-  resources :calendars
 
   namespace :admin do
     root to: 'boards#index'
+    resources :blogs
     get 'login', to: 'user_sessions#new'
     post 'login', to: 'user_sessions#create'
     delete 'logout', to: 'user_sessions#destroy'
