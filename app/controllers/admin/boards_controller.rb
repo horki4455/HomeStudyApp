@@ -2,7 +2,7 @@ class Admin::BoardsController < Admin::BaseController
   before_action :set_board, only: %i[show update destroy edit]
   
   def index
-    @boards = Board.all.includes(:user).order(created_at: :desc)
+    @boards = current_user.boards.includes(:user).order(created_at: :desc)
   end
 
   def show

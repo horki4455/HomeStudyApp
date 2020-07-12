@@ -29,35 +29,20 @@
     </div>
 </div>
 <div class="section-title text-center">
-  <h1><%= link_to("学習コンテンツお試す！", words_path, {class: "title"}) %></h1>
+  <h1>作成中学習コンテンツ！近日機能拡充予定</h1>
 
-  <div class="swiper-container">
-  <h1>第二フェーズで<br>学習コンテンツ<br>拡充予定！</h1>
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">
-       <%= image_tag 'sample.jpg'%>
-    </div>
-    <div class="swiper-slide">
-           <%= image_tag 'sennsei.jpg'%>
-    </div>
-    <div class="swiper-slide">
-           <%= image_tag 'sennsei.jpg'%>
-    </div>
-  </div>
-</div>
+  <section class="container">
+    <p id="question"></p>
+    <ul id="choices"></ul>
+    <div id="btn" class="disabled">Next</div>
+    </section>
+    <section id="result" class="hidden">
+      <p></p>
+      <a href="">Replay?</a>
+  </section>
+  <script src="javascripts/tango.js"></script>
+  <%= javascript_include_tag 'tango.js' %>
 
-<script>
-  let swipeOption = {
-    loop: true,
-    effect: 'fade',
-    autoplay: {
-      delay: 1500,
-      disableOnInteraction: false,
-    },
-    speed: 2000,
-  }
-  new Swiper('.swiper-container', swipeOption);
-</script>
 
   <h1>最近の生徒たちのアウトプット一覧</h1>
 
@@ -71,6 +56,4 @@
     </div>
   </div>
   <%= link_to 'もっと見る', posts_path, class: 'nav-link' %>
-
-
 </div>

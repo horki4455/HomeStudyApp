@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
   post 'guest', to: 'user_sessions#guest'
-  resources :words, only: %i[index]
+  resources :words, only: %i[index] ##いらなくね
   resources :users, only: %i[new create]
   resource :profile, only: %i[show edit update]
-  resources :posts
+  resources :tasks
   resources :posts, shallow: true do
     resource :likes, only: %i[create destroy]
     get :likes, on: :collection

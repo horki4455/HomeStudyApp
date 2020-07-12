@@ -1,15 +1,15 @@
 class Admin::BlogsController < Admin::BaseController
+  before_action :set_blog, only: %i[show edit update destroy]
+
   def index
-    @blogs = Blog.all
+    @blogs = current_user.blogs.includes(:user).order(created_at: :desc)
   end
 
   def new
     @blog = Blog.new
   end
 
-  def show
-    @blog = Blog.find(params[:id])
-  end
+  def show;end
 
   def create
     @blog = Blog.new(blog_params)
@@ -22,17 +22,13 @@ class Admin::BlogsController < Admin::BaseController
   end
 
   def destroy
-    @blog = Blog.find(params[:id])
     @blog.destroy
     redirect_to admin_blogs_path, danger:"削除しました"
   end
 
-  def edit
-    @blog = Blog.find(params[:id])
-  end
+  def edit;end
 
   def update
-    @blog = Blog.find(params[:id])
     if @blog.update(blog_params)
       redirect_to admin_blogs_path, success: "編集しました"
     else
@@ -44,5 +40,9 @@ class Admin::BlogsController < Admin::BaseController
 
   def blog_params
     params.require(:blog).permit(:title, :content, :start_time)
+  end
+
+  def set_blog
+    @blog = Blog.find(params[:id])
   end
 end

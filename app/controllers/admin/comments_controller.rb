@@ -1,7 +1,7 @@
 class Admin::CommentsController < Admin::BaseController
 
   def index
-    @q = Comment.ransack(params[:q])
+    @q = current_user.comments.ransack(params[:q])
     @comments = @q.result(distinct: true).includes(:board).order(created_at: :desc)
   end
 
