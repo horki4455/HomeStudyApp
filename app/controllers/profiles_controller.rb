@@ -1,9 +1,9 @@
 class ProfilesController < ApplicationController
-  before_action :set_user, only: %i[edit update]
+  before_action :set_user, only: %i[show edit update]
   before_action :check_guest, only: %i[edit update]
-  
-  def edit
-  end
+  def show;end
+
+  def edit;end
 
   def update
     if @user.update(user_params)

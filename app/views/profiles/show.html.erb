@@ -15,6 +15,7 @@
           <td><%= image_tag current_user.image.url, class: 'rounded-circle', size: '50x50' %></td>
         </tr>
         <%= link_to '今日のタスクを設定する', tasks_path %>
+        <%= render 'relationships/follow_button', { user: @user } %>
       </table>
     </div>
   </div>
