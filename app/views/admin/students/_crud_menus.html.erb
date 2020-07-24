@@ -1,0 +1,8 @@
+<ul class='crud-menu-btn list-inline float-right'>
+  <li class="list-inline-item">
+    <%= link_to '編集', edit_admin_student_path(student), id: "button-delete-#{student.id}" %>
+  </li>
+  <li class="list-inline-item">
+    <%= link_to '削除', admin_student_path(student), id: "button-delete-#{student.id}", class: 'nav-link', method: :delete  %>
+  </li>
+</ul>

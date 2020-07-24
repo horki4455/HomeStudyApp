@@ -3,14 +3,21 @@
     <div class="col-md-10 offset-md-1">
       <h1>マイページ編集画面</h1>
       <%= form_with model: @user, url: profile_path, local: true do |f| %>
-        <%= f.label :email %>
-        <%= f.email_field :email, class: 'form-control mb-3' %>
+
+        <%= f.label :年齢 %>
+        <%= f.text_field :age, class: 'form-control mb-3' %>
 
         <%= f.label :last_name %>
         <%= f.text_field :last_name, class: 'form-control mb-3' %>
 
         <%= f.label :first_name %>
         <%= f.text_field :first_name, class: 'form-control mb-3' %>
+
+        <%= f.label :email %>
+        <%= f.text_field :email, class: 'form-control mb-3' %>
+
+        <%= f.label :一言自己紹介 %>
+        <%= f.text_field :profile, class: 'form-control mb-3' %>
 
         <%= f.label :アバター %>
         <%= f.file_field :image, class: 'form-control', id: :'js-preview-img' %>

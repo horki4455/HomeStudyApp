@@ -1,0 +1,11 @@
+<div class="main posts-new">
+  <div class="container">
+    <h1 class="form-heading">今日の学習目標を作成</h1>
+    <%= form_with model: @task, url: task_path(@task), local: true do |f| %>
+      <div class="form-group">
+        <%= f.text_area :content, class: 'form-control', row: 5, style: 'height: 80px' %>
+      </div>
+      <%= f.submit '更新する', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>

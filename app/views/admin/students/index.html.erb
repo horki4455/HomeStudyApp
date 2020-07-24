@@ -1,0 +1,11 @@
+<div class="container pt-3">
+  <div class="row">
+    <% if @students.present? %>
+      <%= render @students %>
+    <% else %>
+      <%=  '誰もいません'  %>
+    <% end %>
+  </div>
+  <%= link_to '募集一覧へ', new_board_path %>
+  <%= link_to '掲示板作成', new_admin_student_path %>
+</div>

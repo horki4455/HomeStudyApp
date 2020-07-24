@@ -1,0 +1,7 @@
+<h3>フォロワー一覧show</h3>
+  <% @user.followers.where.not(id: current_user.id).each do |user| %>
+    <p>
+      <%= "名前: #{user.full_name}" %>
+      <%= link_to "show", user_path(user) %>
+    </p>
+  <% end %>

@@ -1,0 +1,15 @@
+<tr>
+  <td>
+    <%= comment.board.board_user_name %>
+  </td>
+  <td>
+    <%= comment.body %>
+  </td>
+  <td>
+    <%= l comment.created_at, format: :long %>
+  </td>
+  <td>
+    <%= link_to '編集', edit_comment_path(comment) %>
+    <%= link_to '削除', comment_path(comment), class: 'nav-link', method: :delete  %>
+  </li>
+</tr>

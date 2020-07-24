@@ -9,55 +9,40 @@
   <div class="container">
     <div class="section-title text-center">
       <h1 class="title">Home Study APP とは</h1>
-      <h4 class="title">家庭教師と親御さんとを繋ぐ<br>学習サポート・コミュニケーションサポートアプリです</h4>
+      <h4 class="title">個人家庭教師の３大悩みを解決！<br>学習・コミュニケーションサポート・生徒先生検索アプリです</h4>
     </div>
     <div class="row description-body">
       <div class="col-md-4 col-sm-6 text-center">
         <i class="fas fa-drumstick-bite fa-top"></i>
-        <h3 class="description-parts">らくらく生徒管理機能</h3>
+        <h3><%= link_to("らくらく生徒管理機能",  admin_root_path, class: "description-parts") %></h3>
         <p>✔家庭教師の味方<br>生徒一覧管理機能で<br>生徒情報の面倒な<br>確認しなくて済みます！</p>
       </div>
       <div class="col-md-4 col-sm-6 text-center">
         <i class="far fa-comment-alt fa-top"></i>
-        <h3 class="description-parts">学習達成度シェアリング機能！</h3>
-        <p>✔ 生徒の進めた内容の可視化機能で<br>学習レベルの確認<br>親御さんの不安点を確認できます！<br>参考資料のシェアリングがスムーズにでき、満足度UP!</p>
+        <h3><%= link_to("生徒と先生マッチング機能", boards_path, {class: "description-parts"}) %></h3>
+        <p>お互い先生と生徒が探し会えます！<br>事前に確認することで<br>不安点を確認できます！<br>両親と参考資料のシェアリングがスムーズにでき、満足度UP!</p>
       </div>
     <div class="col-md-4 col-sm-6 text-center">
       <i class="fa fa-search fa-top"></i>
       <h3 class="description-parts">あんしん情報共有機能</h3>
-      <p>✔ 大変な連絡機能をサポート<br>親御さんは欲しい情報を定期的に受信、確認できます！<br>家庭教師に必須の親御さんへの情報交換をお手伝い！</p></div>
+      <p>✔ 親御さんへの連絡は一番大切で重要です<br>家庭教師に必須の親御さんへの情報交換をお手伝い！</p></div>
     </div>
 </div>
 <div class="section-title text-center">
-  <h1><%= link_to("学習コンテンツお試す！", words_path, {class: "title"}) %></h1>
+  <h1>作成中学習コンテンツ！近日機能拡充予定</h1>
 
-  <div class="swiper-container">
-  <h1>第二フェーズで<br>学習コンテンツ<br>拡充予定！</h1>
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">
-       <%= image_tag 'sample.jpg'%>
-    </div>
-    <div class="swiper-slide">
-           <%= image_tag 'sennsei.jpg'%>
-    </div>
-    <div class="swiper-slide">
-           <%= image_tag 'sennsei.jpg'%>
-    </div>
-  </div>
-</div>
+  <section class="container">
+    <p id="question"></p>
+    <ul id="choices"></ul>
+    <div id="btn" class="disabled">Next</div>
+    </section>
+    <section id="result" class="hidden">
+      <p></p>
+      <a href="">Replay?</a>
+  </section>
+  <script src="javascripts/tango.js"></script>
+  <%= javascript_include_tag 'tango.js' %>
 
-<script>
-  let swipeOption = {
-    loop: true,
-    effect: 'fade',
-    autoplay: {
-      delay: 1500,
-      disableOnInteraction: false,
-    },
-    speed: 2000,
-  }
-  new Swiper('.swiper-container', swipeOption);
-</script>
 
   <h1>最近の生徒たちのアウトプット一覧</h1>
 
@@ -70,7 +55,5 @@
       <% end %>
     </div>
   </div>
-  <%= link_to 'もっと見る', posts_path, class: 'nav-link' %>
-
-
+  <%= link_to 'もっと見る', posts_path, class: 'btn btn-outline-info' %>
 </div>

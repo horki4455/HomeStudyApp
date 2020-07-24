@@ -1,0 +1,15 @@
+<tr>
+  <td>
+    <%= memo.student.name %>
+  </td>
+  <td>
+    <%= memo.body %>
+  </td>
+  <td>
+    <%= l memo.created_at, format: :long %>
+  </td>
+  <td>
+    <%= link_to '編集', edit_admin_memo_path(memo) %>
+    <%= link_to '削除',  admin_memo_path(memo), class: 'nav-link', method: :delete  %>
+  </li>
+</tr>
