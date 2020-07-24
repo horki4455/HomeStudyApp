@@ -3,8 +3,8 @@
     <% if @boards.present? %>
       <%= render @boards %>
     <% else %>
-      <%=  '生徒がいません'  %>
+      <%=  '誰もいません'  %>
     <% end %>
-    <%= link_to '募集板', new_board_path %>
   </div>
+  <%= link_to '募集板作成', new_board_path %>
 </div>

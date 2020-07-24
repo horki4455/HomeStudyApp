@@ -3,7 +3,7 @@
     <% @posts.each do |post| %>
       <div class="posts-index-item">
         <div class="post-left">
-          <%= image_tag current_user.image.url, class: 'rounded-circle', size: '50x50' %></td>
+          <%= image_tag post.user.image_url, class: 'rounded-circle', size: '50x50' %></td>
         </div>
         <div class="posts-show-item">
         <% if post.user_id == current_user.id %>
@@ -11,10 +11,11 @@
           <%= link_to '編集', edit_post_path(post) %>
           <%= link_to '削除', post_path(post), method: :delete %>
           </div>
-      　<% end %>
+        <% else %>
           <div class="post-user-name">
             <%= render partial: 'likes', locals: { post: post} %>
           </div>
+      　<% end %>
           <p>
             <%= post.content %>
           </p>
@@ -26,12 +27,11 @@
         <div class="post-right">
           <div class="post-user-name">
         </div>
-          <%= link_to '詳細画面(show)', post_path(post), class: 'nav-link' %>
 
         </div>
       </div>
     <% end %>
     <%= paginate @posts %>
-    <%= link_to '今日の学習をアウトプットする', new_post_path, class: 'nav-link' %>
+    <%= link_to '今日の学習をアウトプットする', new_post_path, class: 'btn btn-primary' %>
   </div>
 </div>

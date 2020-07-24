@@ -3,7 +3,7 @@
   <!-- Brand Logo -->
   <a>
   <%= link_to root_path, class: "brand-link" do %>
-    <span class="brand-text font-weight-light">生徒用に切替</span>
+    <span class="brand-text font-weight-light">Home Studt App</span>
   <% end %>
   </a>
 
@@ -11,7 +11,7 @@
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-      <%= link_to profile_path, class: 'navbar-brand' do %>
+      <%= link_to tasks_path, class: 'navbar-brand' do %>
         <%= image_tag current_user.image.url, class: 'img-circle elevation-2' %>
       <div class="info">
        <%= current_user.full_name %></a>
@@ -23,22 +23,31 @@
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
-          <%= link_to admin_boards_path, class: "nav-link" do %>
+          <%= link_to admin_users_path, class: "nav-link" do %>
             <i class="nav-icon far fa-file"></i>
             <p>
-              生徒一覧
+              マッチング生徒
             </p>
           <% end %>
         </li>
 
         <li class="nav-item">
-          <%= link_to admin_comments_path, class: "nav-link" do %>
+          <%= link_to admin_students_path, class: "nav-link" do %>
             <i class="nav-icon far fa-user"></i>
             <p>
-              学習記録一覧
+              管理生徒一覧
             </p>
           <% end %>
         </li>
+
+        <li class="nav-item">
+        <%= link_to  admin_memos_path, class: "nav-link" do %>
+          <i class="nav-icon far fa-user"></i>
+          <p>
+            学習メモ一覧
+          </p>
+        <% end %>
+      </li>
 
         <li class="nav-item">
         <%= link_to admin_blogs_path, class: "nav-link" do %>

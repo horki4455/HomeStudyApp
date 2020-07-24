@@ -1,0 +1,10 @@
+<div class="row mb-3">
+  <div class="col-lg-8 offset-lg-2">
+  <%= form_with model: memo, url: admin_memo_path(@memo), local: true do |f| %>
+    <%= f.label :学習日報 %>
+    <%= memo.created_at%>
+    <%= f.text_area :body, class: 'form-control mb-3', id: 'js-new-memo-body', row: 4, placeholder: '宿題、その日の学習内容を掲示しましょう', row: 20, style: 'height: 150px' %>
+    <%= f.submit '掲示する', class: 'btn btn-primary' %>
+  <% end %>
+  </div>
+</div>

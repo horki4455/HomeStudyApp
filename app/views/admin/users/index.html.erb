@@ -1,0 +1,10 @@
+<div class="container pt-3">
+<div class="row">
+  <% if @users.present? %>
+    <%= render @users %>
+  <% else %>
+    <%=  '生徒がいません(相互フォローが表示されます)'  %>
+  <% end %>
+</div>
+<%= link_to '募集一覧', boards_path %>
+</div>

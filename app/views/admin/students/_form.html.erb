@@ -1,4 +1,4 @@
-<%= form_with model: @board,url: admin_board_path(board),local: true do |f| %>
+<%= form_with model: @student,url: admin_student_path(student),local: true do |f| %>
     <div class="form-group">
       <%= f.label :名前 %>
       <%= f.text_field :name, class: 'form-control'%>
@@ -8,7 +8,6 @@
       <%= f.text_area :body, row: '10', class: 'form-control', style: 'height: 200px' %>
       <%= f.submit '更新', class: 'btn btn-primary' %>
       <%= f.file_field :image, class: 'form-control', id: :'js-preview-img' %>
-      <%= image_tag @board.image.url, id: :js_img_preview %>
+      <%= image_tag @student.image.url, id: :js_img_preview %>
     </div>
-  <% end %>
-  
+<% end %>

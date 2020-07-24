@@ -10,9 +10,8 @@
               <%= image_tag @board.image.url, class: 'card-img-top img-fluid', size: '300x200' %>
             </div>
             <div class='col-md-9'>
-              <h3 class="d-inline"><%= @board.name %></h3>
+              <h3 class="d-inline"><%= @board.user.full_name %></h3>
                 <ul class="list-inline">
-              <h3 class="d-inline"><%= @board.mail %></h3>
               </ul>
               
               <ul class="list-inline">
@@ -20,6 +19,7 @@
               </ul>
             </div>
           </div>
+          <%= render 'relationships/follow_button', id: @board.user_id %>
           <%= render 'crud_menus', board: @board %>
           <%= render 'comments/form', { board: @board, comment: Comment.new } %>
           <%= render 'comments/comments', { comments: @board.comments.includes(:user).order(created_at: :desc) } %>

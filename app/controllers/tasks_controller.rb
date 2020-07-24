@@ -6,6 +6,10 @@ before_action :set_task, only: %i[edit update destroy]
     @tasks = current_user.tasks.includes(:user).order(created_at: :desc)
   end
 
+  def show
+    @tasks = current_user.tasks
+  end
+
   def new
     @task = Task.new
   end

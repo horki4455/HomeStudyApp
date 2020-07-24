@@ -1,27 +1,65 @@
-<div class="container mb-5 pt-2">
-  <h1><%= 'タスク一覧' %></h1>
+
+<div class="container pt-3">
   <div class="row">
-    <div class="col-md-12 mb-3">
-    <%= link_to '今日の学習目標を作成', new_task_path, class: 'nav-link' %>
+    <div class="col-md-10 offset-md-1">
+      <h1 class="float-left mb-5">プロフィール</h1>
+      <%= link_to '編集画面', edit_profile_path, class: 'btn btn-success float-right' %>
+      <table class="table">
+        <tr>
+          <td><%= current_user.age %></td>
+        </tr>
+
+        <tr>
+          <td><%= current_user.email %></td>
+        </tr>
+
+        <tr>
+          <td><%= current_user.full_name %></td>
+        </tr>
+
+        <tr>
+        <td><%= current_user.profile %></td>
+        </tr>
+
+        <tr>
+          <td><%= image_tag current_user.image.url, class: 'rounded-circle', size: '50x50' %></td>
+        </tr>
+      </table>
+
+      <div class="container mb-5 pt-2">
+      <%= link_to 'タスク作成', new_task_path, class: 'btn btn-success float-right' %>
+        <h1><%= 'タスク一覧' %></h1>
+        <div class="row">
+          <div class="col-md-12 mb-3">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th scope="col">内容</th>
+                <th scope="col">日付</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+          <tbody>
+          <%= render @tasks %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-12">
-      <table class="table table-striped">
-        <thead>
-        <tr>
-          <th scope="col">今日</th>
-          <th scope="col">内容</th>
-          <th scope="col">日付</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-    <tbody>
-      <% if @tasks.present? %>
-        <%= render @tasks %>
-      <% else %>
-        <%=  '詳細がありません'  %>
-      <% end %>
-    </tbody>
-  </table>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+

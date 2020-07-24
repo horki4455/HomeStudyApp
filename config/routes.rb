@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
   post 'guest', to: 'user_sessions#guest'
-  resources :users, only: %i[new create show]
-  resource :profile, only: %i[show edit update]
+  resources :users
+  resource :profile
   resources :tasks
   resources :boards do
     resources :comments, only: %i[create], shallow: true
@@ -19,15 +19,16 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
 
   namespace :admin do
-    root to: 'boards#index'
+    root to: 'users#index'
+    resources :students do
+      resources :memos, shallow: true
+    end
+    resources :memos, only: %i[index update edit destroy], shallow: true
     resources :blogs
-    get 'login', to: 'user_sessions#new'
+    resources :users
+    get 'login', to: 'user_sessions#new　'#おかしい
     post 'login', to: 'user_sessions#create'
     delete 'logout', to: 'user_sessions#destroy'
-    resources :boards do#削除
-      resources :comments, only: %i[create], shallow: true
-    end
-    resources :comments, only: %i[index update edit destroy], shallow: true
     resources :users, only: %i[index edit update show destroy]
   end
 end

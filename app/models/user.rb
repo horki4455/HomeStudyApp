@@ -10,7 +10,9 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :follow
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
   has_many :followers, through: :reverse_of_relationships, source: :user
-  
+  has_many :students, dependent: :destroy
+  has_many :memos, dependent: :destroy
+
   mount_uploader :image, ImageUploader
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
@@ -30,7 +32,7 @@ class User < ApplicationRecord
     id == object.user_id
   end
 
-  def follow(other_user)#decoraterに移行予定
+  def follow(other_user)
     unless self == other_user
       self.relationships.find_or_create_by(follow_id: other_user.id)
     end

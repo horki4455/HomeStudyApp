@@ -31,7 +31,7 @@ class BoardsController < ApplicationController
     def update
       @board = current_user.boards.find(params[:id])
       if @board.update(board_params)
-        redirect_to(admin_boards_path(@board), success: '掲示板を更新しました。')
+        redirect_to(boards_path(@board), success: '掲示板を更新しました。')
       else
         flash.now[:danger] = '掲示板の更新に失敗しました。'
         render :edit
@@ -40,13 +40,13 @@ class BoardsController < ApplicationController
     
     def destroy
       @board.destroy!
-      redirect_to(admin_boards_path, success: '掲示板を消去しました。')
+      redirect_to(boards_path, success: '掲示板を消去しました。')
     end
   
     private
   
     def board_params
-      params.require(:board).permit(:name, :body, :image, :mail)
+      params.require(:board).permit(:name, :body, :image, :mail).merge(user_id: params[:user_id])
     end
   
     def set_board
