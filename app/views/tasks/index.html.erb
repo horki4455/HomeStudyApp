@@ -6,23 +6,23 @@
       <%= link_to '編集画面', edit_profile_path, class: 'btn btn-success float-right' %>
       <table class="table">
         <tr>
-          <td><%= current_user.age %></td>
+          <th>年齢<td><%= current_user.age %></td></th>
         </tr>
 
         <tr>
-          <td><%= current_user.email %></td>
+          <th>Eメール<td><%= current_user.email %></td></th>
         </tr>
 
         <tr>
-          <td><%= current_user.full_name %></td>
+          <th>名前<td><%= current_user.full_name %></td></th>
         </tr>
 
         <tr>
-        <td><%= current_user.profile %></td>
+          <th>ひとこと<td><%= current_user.profile %></td></th>
         </tr>
 
         <tr>
-          <td><%= image_tag current_user.image.url, class: 'rounded-circle', size: '50x50' %></td>
+          <th>写真<td><%= image_tag current_user.image.url, class: 'rounded-circle', size: '50x50' %></td></th>
         </tr>
       </table>
 

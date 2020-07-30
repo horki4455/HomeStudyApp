@@ -16,7 +16,7 @@ class BoardsController < ApplicationController
     def create
       @board = Board.new(board_params)
       @board.user = current_user
-      if @board.save!
+      if @board.save
         redirect_to(boards_path, success: '掲示板を作成しました。')
       else
         flash.now[:danger] = '掲示板の作成に失敗しました。'
@@ -25,12 +25,12 @@ class BoardsController < ApplicationController
     end
   
     def edit
-      @board = current_user.boards.find(params[:id])
+      @board.user = current_user
     end
   
     def update
-      @board = current_user.boards.find(params[:id])
-      if @board.update(board_params)
+      @board.user = current_user
+      if @board.update!(board_params)
         redirect_to(boards_path(@board), success: '掲示板を更新しました。')
       else
         flash.now[:danger] = '掲示板の更新に失敗しました。'
@@ -46,7 +46,7 @@ class BoardsController < ApplicationController
     private
   
     def board_params
-      params.require(:board).permit(:name, :body, :image, :mail).merge(user_id: params[:user_id])
+      params.require(:board).permit(:name, :body, :image, :mail, :user_id)
     end
   
     def set_board

@@ -10,7 +10,7 @@
               <%= image_tag @board.image.url, class: 'card-img-top img-fluid', size: '300x200' %>
             </div>
             <div class='col-md-9'>
-              <h3 class="d-inline"><%= @board.user.full_name %></h3>
+              <h3 class="d-inline"><%= link_to @board.user.full_name, user_path(@board.user_id) %></h3>
                 <ul class="list-inline">
               </ul>
               
@@ -19,8 +19,9 @@
               </ul>
             </div>
           </div>
-          <%= render 'relationships/follow_button', id: @board.user_id %>
-          <%= render 'crud_menus', board: @board %>
+          <% if current_user.id == @board.user_id %>
+            <%= render 'crud_menus', board: @board %>
+          <% end %>
           <%= render 'comments/form', { board: @board, comment: Comment.new } %>
           <%= render 'comments/comments', { comments: @board.comments.includes(:user).order(created_at: :desc) } %>
         </div>

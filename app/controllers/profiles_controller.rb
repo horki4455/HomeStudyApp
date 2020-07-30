@@ -25,7 +25,7 @@ class ProfilesController < ApplicationController
 
   def check_guest
     if 'test@example.com' == current_user.email
-      redirect_to profile_path, danger: 'ゲストユーザーの変更・削除はできません'
+      redirect_to tasks_path(@user), danger: 'ゲストユーザーの変更・削除はできません'
     end
   end
 end

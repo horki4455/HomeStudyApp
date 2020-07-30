@@ -2,7 +2,7 @@ class UsersController < ApplicationController
     skip_before_action :require_login, only: %i[index show new create]
 
     def index
-      @users = User.all.order(created_at: :desc)
+      @users = current_user.users.order(created_at: :desc)
     end
 
     def show
@@ -26,6 +26,6 @@ class UsersController < ApplicationController
     private
 
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :last_name, :first_name, :age, :profile)
+      params.require(:user).permit(:email, :password, :password_confirmation, :last_name, :first_name, :age, :profile, follow_id)
     end
   end

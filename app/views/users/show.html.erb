@@ -1,31 +1,24 @@
-<h1>そいつのプロフィール</h1>
+<div class="container pt-3">
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <h1 class="float-left mb-5"><%= @user.full_name %>のプロフィール</h1>
+      <table class="table">
+        <tr>
+          <th>年齢<td><%= current_user.age %></td></th>
+        </tr>
 
-<ul class="users">
-    <li>
-      <%= @user.full_name %>
-    </li>
-    <%= render 'relationships/follow_button', { user: @user } %>
-</ul>
+        <tr>
+          <th>名前<td><%= current_user.full_name %></td></th>
+        </tr>
 
-<h3>フォロー一覧</h3>
-  <% @user.followings.where.not(id: current_user.id).each do |user| %>
-    <p>
-    <%= "名前: #{user.full_name}" %>
-      <%= render 'relationships/follow_button', { user: @user } %>
-      <%= link_to "show", user_path(user) %>
-      <%= @user.first_name %>
-    </p>
-  <% end %>
-<h3>フォロワー一覧</h3>
-  <% @user.followers.where.not(id: current_user.id).each do |user| %>
-    <p>
-      <%= "名前: #{user.full_name}" %>
-      <%= link_to "show", user_path(user) %>
-    </p>
-  <% end %>
-  <h3>相互フォロー関係</h3>
-  <% if @user.followers ==  @user.followings %>
-  '全体のうちで何かが成立している'
-  <% else %>
-  'ない'
-  <% end %>
+        <tr>
+          <th>ひとこと<td><%= current_user.profile %></td></th>
+        </tr>
+
+        <tr>
+          <th>写真<td><%= image_tag current_user.image.url, class: 'rounded-circle', size: '50x50' %></td></th>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

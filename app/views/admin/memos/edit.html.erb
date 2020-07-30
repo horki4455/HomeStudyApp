@@ -1,7 +1,7 @@
 <div class="main posts-new">
   <div class="container">
-    <h1 class="form-heading">編集画面</h1>
-    <%= form_with model: memo, url: admin_memo_path(@memo), local: true do |f| %>
+    <h1 class="form-heading">編集画面</h1>y
+    <%= form_with model: @memo, url: admin_memo_path(@memo), local: true do |f| %>
       <div class="form-group">
         <%= f.text_area :body, class: 'form-control', row: 5, style: 'height: 80px' %>
       </div>

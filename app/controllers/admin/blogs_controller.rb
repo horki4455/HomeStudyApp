@@ -13,7 +13,7 @@ class Admin::BlogsController < Admin::BaseController
 
   def create
     @blog = Blog.new(blog_params)
-    if @blog.save!
+    if @blog.save
       redirect_to(admin_blogs_path, success: '予定を作成しました。')
     else
       flash.now[:danger] = '予定の作成に失敗しました。'
