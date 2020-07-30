@@ -18,13 +18,15 @@ class Admin::MemosController < Admin::BaseController
   end
 
   def edit
-    @memo = current_user.memos.find(params[:id])
+    @user = current_user
+    @memo = Memo.find(params[:id])
   end
 
   def update
-    @memo = current_user.memos.find(params[:id])
+    @user = current_user
+    @memo = Memo.find(params[:id])
     if @memo.update(memo_update_params)
-      redirect_to(edit_admin_memo_path(@memo), success: '掲示板を更新しました。')
+      redirect_to(admin_memos_path, success: '掲示板を更新しました。')
     else
       flash.now[:danger] = '掲示板の更新に失敗しました。'
       render :edit
@@ -34,7 +36,7 @@ class Admin::MemosController < Admin::BaseController
   def destroy
     @memo = Memo.find(params[:id])
     @memo.destroy
-    redirect_to(admin_student_memos_path(@memo), danger:  '投稿を削除しました')
+    redirect_back fallback_location: admin_memos_path(@memo), danger: '投稿を削除しました'
   end
 
   def memo_params

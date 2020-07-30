@@ -1,7 +1,7 @@
 <div class="container pt-5">
   <div class="row mb-3">
     <div class="col-lg-8 offset-lg-2">
-      <h1>生徒詳細画面</h1>
+      <h1>学習メモ画面</h1>
       <!-- 掲示板内容 -->
       <article class="card">
         <div class="card-body">
@@ -20,7 +20,7 @@
             </div>
           </div>
           <%= render 'crud_menus', student: @student %>
-          <%= render 'admin/memos/form', { student: @student, memo: @memo } %>
+          <%= render 'admin/memos/form', { student: @student, memo: Memo.new } %>
           <%= render 'admin/memos/memos', { memos: @student.memos.includes(:user).order(created_at: :desc) } %>
         </div>
       </article>

@@ -2,11 +2,12 @@ class Admin::StudentsController < Admin::BaseController
     before_action :set_student, only: %i[show update destroy edit]
 
     def index
-      @students = Student.all.includes(:user).order(created_at: :desc)
+      @students = current_user.students.includes(:user).order(created_at: :desc)
     end
 
     def show
       @memo = Memo.new
+      @student.user = current_user
     end
 
     def new
@@ -16,7 +17,7 @@ class Admin::StudentsController < Admin::BaseController
     def create
       @student = Student.new(student_params)
       @student.user = current_user
-      if @student.save!
+      if @student.save
         redirect_to(admin_students_path, success: '掲示板を作成しました。')
       else
         flash.now[:danger] = '掲示板の作成に失敗しました。'
@@ -25,12 +26,12 @@ class Admin::StudentsController < Admin::BaseController
     end
 
     def edit
-      @student = current_user.students.find(params[:id])
+      @student.user = current_user
     end
 
     def update
-      @student = current_user.students.find(params[:id])
-      if @student.update(student_params)
+      @student.user = current_user
+      if @student.update!(student_params)
         redirect_to(admin_students_path(@student), success: '掲示板を更新しました。')
       else
         flash.now[:danger] = '掲示板の更新に失敗しました。'
@@ -46,7 +47,7 @@ class Admin::StudentsController < Admin::BaseController
     private
 
     def student_params
-      params.require(:student).permit(:name, :body, :image, :mail).merge(user_id: params[:user_id])
+      params.require(:student).permit(:name, :body, :image, :mail)
     end
 
     def set_student

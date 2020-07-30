@@ -1,9 +1,7 @@
 class Admin::UsersController < Admin::BaseController
-skip_before_action :require_login, only: %i[index show new create]
 
     def index
-      @user = current_user #いらない
-      @users = @user.followings  
+      @users = current_user.followings.order(created_at: :desc)
     end
 
     def show
